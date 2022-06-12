@@ -9,5 +9,6 @@ namespace Project.Data.Interface
 {
     public interface IProduct: IGeneric<Product>
     {
+        Task<List<Product>> GetProductscustomized();
     }
 }
