@@ -28,6 +28,15 @@ namespace Project.API.Config
 
         private string ConnectionString() => "Data Source=localhost;Initial Catalog=Poject_API;Integrated Security=True;  Persist Security Info=False; User ID=sa; Password=0l0ga;Encrypt=False;TrusrServerCertificate=False";
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(ConnectionString());
+                base.OnConfiguring(optionsBuilder);
+            }
+        }
+
         public DbSet<Product> Products { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }
