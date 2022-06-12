@@ -38,10 +38,10 @@ namespace Project.Web.API.Controllers
             var result = await _signInManager.PasswordSignInAsync(input.Email, input.Password, false, false);
             if (result.Succeeded)
             {
-                var token = new TokenJWTBuilder().AddSecurityKey(JWTSecurityKey.Create("Secret_key-12345678"))
+                var token = new TokenJWTBuilder().AddSecurityKey(JWTSecurityKey.Create("Secret_Key-12345678"))
                                                  .AddSubject("Genesys Code")
-                                                 .AddIssuer("Test.Security.Bearer")
-                                                 .AddAudience("test.Security.Bearer")
+                                                 .AddIssuer("Test.Securiry.Bearer")
+                                                 .AddAudience("test.Securiry.Bearer")
                                                  .AddClaim("UserAPINumber", "1")
                                                  .AddExpiry(5)
                                                  .Builder();
