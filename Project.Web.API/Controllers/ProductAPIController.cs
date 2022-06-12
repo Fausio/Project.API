@@ -26,7 +26,7 @@ namespace Project.Web.API.Controllers
             return Json(await this._product.Get());
         }
 
-        [HttpGet("/api/createProduct")]
+        [HttpPost("/api/createProduct")]
         public async Task createProduct ([FromBody] Product product)
         {
             await Task.FromResult(this._product.Create(product));
