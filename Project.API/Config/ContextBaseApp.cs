@@ -26,6 +26,8 @@ namespace Project.API.Config
             base.OnModelCreating(builder);
         }
 
+        private string ConnectionString() => "Data Source=localhost;Initial Catalog=Poject_API;Integrated Security=True;  Persist Security Info=False; User ID=sa; Password=0l0ga;Encrypt=False;TrusrServerCertificate=False";
+
         public DbSet<Product> Products { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }
