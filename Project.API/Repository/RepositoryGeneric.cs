@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Project.API.Config;
-using Project.API.Interface;
+using Project.Data.Config;
+using Project.Data.Interface;
 using System;
 using System.Collections.Generic;
 using System.IO;

@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Project.API.Entity;
+using Project.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project.API.Config
+namespace Project.Data.Config
 {
     public class ContextBaseApp : IdentityDbContext<ApplicationUser>
     {

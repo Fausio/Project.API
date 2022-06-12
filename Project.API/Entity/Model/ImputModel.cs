@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project.API.Entity.Model
+namespace Project.Data.Entity.Model
 {
     public class ImputModel
     {
