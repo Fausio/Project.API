@@ -29,6 +29,8 @@ namespace Project.Web.API
             Configuration = configuration;
         }
 
+        public string CorsPolicy = "_corsPolicy";
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -51,6 +53,14 @@ namespace Project.Web.API
             services.AddSingleton(typeof(IGeneric<>), typeof(RepositoryGeneric<>));
             services.AddSingleton<IProduct, RepositoryProduct>();
 
+            services.AddCors(options => {
+
+                // http://localhost:4200/ => url of angular project
+                options.AddPolicy(CorsPolicy, builder => builder.WithOrigins("http://localhost:4200/", "https://localhost:4200/")
+                                                                .AllowAnyHeader()
+                                                                .AllowAnyMethod());
+                                                                
+            });
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
            .AddJwtBearer(option =>
