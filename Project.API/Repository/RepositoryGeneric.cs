@@ -42,29 +42,29 @@ namespace Project.API.Repository
         #endregion
 
 
-        public Task Create(T obj)
+        public async Task Create(T obj)
         {
             throw new NotImplementedException();
         }
 
-        public Task Delete(T obj)
+        public async Task Delete(T obj)
         {
             throw new NotImplementedException();
         }
 
 
 
-        public Task Get(int Id)
+        public async Task<T> Get(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<T>> Get()
+        public async Task<List<T>> Get()
         {
             throw new NotImplementedException();
         }
 
-        public Task Update(T obj)
+        public async Task Update(T obj)
         {
             throw new NotImplementedException();
         }

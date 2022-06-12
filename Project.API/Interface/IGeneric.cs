@@ -11,7 +11,7 @@ namespace Project.API.Interface
         Task Create(T obj);
         Task Update(T obj);
         Task Delete(T obj);
-        Task Get(int Id);
+        Task<T> Get(int Id);
         Task<List<T>> Get();
     }
 }
