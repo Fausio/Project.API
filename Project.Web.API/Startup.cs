@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -7,12 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Project.API.Repository;
 using Project.Data.Config;
 using Project.Data.Entity;
 using Project.Data.Interface;
-using Project.Data.Repository;
-using Project.Web.API.Data;
+using Project.Data.Repository; 
+using Project.Web.API.Token;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,6 +50,37 @@ namespace Project.Web.API
 
             services.AddSingleton(typeof(IGeneric<>), typeof(RepositoryGeneric<>));
             services.AddSingleton<IProduct, RepositoryProduct>();
+
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+           .AddJwtBearer(option =>
+           {
+               option.TokenValidationParameters = new TokenValidationParameters
+               {
+                   ValidateIssuer = false,
+                   ValidateAudience = false,
+                   ValidateLifetime = true,
+                   ValidateIssuerSigningKey = true,
+
+                   ValidIssuer = "Teste.Securiry.Bearer",
+                   ValidAudience = "Teste.Securiry.Bearer",
+                   IssuerSigningKey = JWTSecurityKey.Create("Secret_Key-12345678")
+               };
+
+               option.Events = new JwtBearerEvents
+               {
+                   OnAuthenticationFailed = context =>
+                   {
+                       Console.WriteLine("OnAuthenticationFailed: " + context.Exception.Message);
+                       return Task.CompletedTask;
+                   },
+                   OnTokenValidated = context =>
+                   {
+                       Console.WriteLine("OnTokenValidated: " + context.SecurityToken);
+                       return Task.CompletedTask;
+                   }
+               };
+           });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
