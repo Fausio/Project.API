@@ -3,7 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 
 namespace Project.Web.API.Token
 {
-    public class cc
+    public class TokenJWT
     {
         private JwtSecurityToken _token;
 
