@@ -30,7 +30,7 @@ namespace Project.Web.API.Controllers
         [Produces("application/json")]
         [HttpPost("/api/CreateToken")]
 
-        public async Task<IActionResult> CreateToken([FromBody] ImputModel input)
+        public async Task<IActionResult> CreateToken([FromBody] InputModel input)
         {
             if (string.IsNullOrWhiteSpace(input.Email) || string.IsNullOrWhiteSpace(input.Password))
             {

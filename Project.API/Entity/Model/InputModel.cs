@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project.Data.Entity.Model
 {
-    public class ImputModel
+    public class InputModel
     {
         public string Email { get; set; }
         public string Password { get; set; }
