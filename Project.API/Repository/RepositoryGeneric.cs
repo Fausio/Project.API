@@ -1,4 +1,6 @@
-﻿using Project.API.Interface;
+﻿using Microsoft.EntityFrameworkCore;
+using Project.API.Config;
+using Project.API.Interface;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,6 +12,7 @@ namespace Project.API.Repository
 {
     public class RepositoryGeneric<T> : IGeneric<T>, IDisposable where T : class
     {
+        private DbContextOptions<ContextBaseApp> db;
 
         #region Dispose https://docs.microsoft.com/en-us/dotnet/api/system.idisposable?view=net-6.0
         // Flag: Has Dispose already been called?
@@ -41,6 +44,12 @@ namespace Project.API.Repository
         }
         #endregion
 
+
+
+        public RepositoryGeneric()
+        {
+            db = new DbContextOptions<ContextBaseApp>();
+        }
 
         public async Task Create(T obj)
         {
