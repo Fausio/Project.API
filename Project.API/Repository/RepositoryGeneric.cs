@@ -53,29 +53,47 @@ namespace Project.API.Repository
 
         public async Task Create(T obj)
         {
-            throw new NotImplementedException();
+            using (var data = new ContextBaseApp(db))
+            {
+                await data.Set<T>().AddAsync(obj);
+                await data.SaveChangesAsync();
+            }
         }
 
         public async Task Delete(T obj)
         {
-            throw new NotImplementedException();
+            using (var data = new ContextBaseApp(db))
+            {
+                data.Set<T>().Remove(obj);
+                await data.SaveChangesAsync();
+            }
         }
 
 
 
         public async Task<T> Get(int Id)
         {
-            throw new NotImplementedException();
+            using (var data = new ContextBaseApp(db))
+            {
+                return await data.Set<T>().FindAsync(Id);
+            }
         }
 
         public async Task<List<T>> Get()
         {
-            throw new NotImplementedException();
+            using (var data = new ContextBaseApp(db))
+            {
+                return await data.Set<T>().ToListAsync();
+            }
         }
 
         public async Task Update(T obj)
         {
-            throw new NotImplementedException();
+            using (var data = new ContextBaseApp(db))
+            {
+                data.Set<T>().Update(obj);
+                await data.SaveChangesAsync();
+            }
         }
     }
 }
