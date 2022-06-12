@@ -117,6 +117,8 @@ namespace Project.Web.API
 
             app.UseRouting();
 
+            app.UseCors("*"); // allow all
+
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -126,6 +128,8 @@ namespace Project.Web.API
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+
+                endpoints.MapControllers().RequireCors(CorsPolicy);
             });
         }
     }
