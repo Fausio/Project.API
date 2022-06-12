@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Project.Data.Entity;
 using Project.Data.Interface;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Project.Web.API.Controllers
 {
-
+    [EnableCors("CorsAPI")]
     [Authorize]
     public class ProductAPIController : Controller
     {

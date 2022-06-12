@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Project.Data.Entity;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace Project.Web.API.Controllers
 {
+    [EnableCors("CorsAPI")]
     public class JWTTokenController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
