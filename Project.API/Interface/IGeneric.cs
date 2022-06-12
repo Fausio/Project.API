@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project.API.Interface
+namespace Project.Data.Interface
 {
     public interface IGeneric<T> where T : class
     {
