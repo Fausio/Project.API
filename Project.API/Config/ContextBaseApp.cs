@@ -16,5 +16,17 @@ namespace Project.API.Config
         {
 
         }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<ApplicationUser>()
+                .ToTable("AspNetUsers")
+                .HasKey(e => e.Id);
+
+            base.OnModelCreating(builder);
+        }
+
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }
 }
