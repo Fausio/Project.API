@@ -14,6 +14,8 @@ namespace Project.Data.Entity
         public int Id { get; set; }
         [Column("Name")]
         public string Name { get; set; }
-        public string MyProperty { get; set; }
+        public string Description { get; set; }
+
+        public string Imagem { get; set; }
     }
 }
